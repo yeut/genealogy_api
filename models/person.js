@@ -17,8 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     Person.Events = Person.hasMany(models.Event);
     Person.HealthConditions = Person.hasMany(models.HealthCondition);
     Person.Occupations = Person.hasMany(models.Occupation);
-    Person.Relationships1 = Person.hasMany(models.Relationship, { foreignKey: 'person1Id', as: 'person1' });
-    Person.Relationships2 = Person.hasMany(models.Relationship, { foreignKey: 'person2Id', as: 'person2' });
+    Person.Relationships1 = Person.hasMany(models.Relationship, { foreignKey: 'Person1Id', as: 'Person1' });
+    Person.Relationships2 = Person.hasMany(models.Relationship, { foreignKey: 'Person2Id', as: 'Person2' });
   };
   return Person;
 };

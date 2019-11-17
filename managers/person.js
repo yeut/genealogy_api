@@ -10,7 +10,15 @@ module.exports.Register = function(db, app) {
   app.get('/persons/:id', function (req, res) {
     console.log('GET persons/' + req.params.id);
     db.models.Person.findAll({ 
-      where: { id: req.params.id }, //include: [dbModel.personEventType],
+      where: { id: req.params.id },
+      include: [
+        db.models.Person.Events,
+        db.models.Person.Educations,
+        db.models.Person.Occupations,
+        db.models.Person.HealthConditions,
+        // db.models.Person.Relationships1,
+        // db.models.Person.Relationships2,
+      ],
     }).then(r => res.json(r));
   });
 
@@ -36,12 +44,15 @@ module.exports.Register = function(db, app) {
     req.body.forEach(element => {
       // update relationships
       db.models.Relationship.update({Person1Id: mergedId}, {where: {Person1Id: element}});
+      db.models.Relationship.update({Person2Id: mergedId}, {where: {Person2Id: element}});
       // update educations
       db.models.Education.update({PersonId: mergedId}, {where: {PersonId: element}});
       // update events
-      db.models.Event.update({personId: mergedId}, {where: {PersonId: element}});
+      db.models.Event.update({PersonId: mergedId}, {where: {PersonId: element}});
       // update occupations
       db.models.Occupation.update({PersonId: mergedId}, {where: {PersonId: element}});
+      // update healthCondition
+      db.models.HealthCondition.update({PersonId: mergedId}, {where: {PersonId: element}});
       // delete persons
       db.models.Person.destroy({where: {id: element}});
     }).then(res.json(req.body.length));

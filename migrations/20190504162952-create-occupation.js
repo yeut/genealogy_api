@@ -17,10 +17,10 @@ module.exports = {
         type: Sequelize.DATE
       },
       begin: {
-        type: Sequelize.DATEONLY
+        type: Sequelize.STRING
       },
       end: {
-        type: Sequelize.DATEONLY
+        type: Sequelize.STRING
       },
       notes: {
         type: Sequelize.STRING
@@ -28,7 +28,14 @@ module.exports = {
       type: {
         allowNull: false,
         type: Sequelize.STRING
-      }
+      },
+      description: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      address: {
+        type: Sequelize.STRING
+      },
     });
   },
   down: (queryInterface, Sequelize) => {

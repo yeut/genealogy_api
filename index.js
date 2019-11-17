@@ -10,52 +10,6 @@ const http = require('http').Server(app);
 //const cookieParser = require('cookie-parser'); // npm cookie-parser
 const httpPort = 80;
 
-/*
- var toto = {
-  description: 'source7',
-  SourceType: {
-      description: 'sourceType4',
-  }
-}
-db.models.Source.create(toto, {
-  include: [{
-    association: db.models.Source.SourceType
-  }]
-});
-
-});
-*/
-
-// Insertion simple :
-//db.models.SourceType.create({description:'teste'})
-
-// Insertion double :
-/*
-db.models.Source.create({
-    description: 'source6',
-    SourceType: {
-        description: 'sourceType3',
-    }
-  }, {
-    include: [{
-      association: db.models.Source.SourceType
-    }]
-  });*/
-  /*
-  var toto = {
-    description: 'source7',
-    SourceType: {
-        description: 'sourceType4',
-    }
-  }
-  db.models.Source.create(toto, {
-    include: [{
-      association: db.models.Source.SourceType
-    }]
-  });*/
-  
-  //managers.standards.aboville.test();
-
 const managers = [
   require(__dirname + '/managers/person.js'),
   require(__dirname + '/managers/relationship.js'),

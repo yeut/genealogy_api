@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'Relationships'
   });
   Relationship.associate = function(models) {
-    Relationship.Person1 = Relationship.belongsTo(models.Person, { foreignKey: 'person1Id' });
-    Relationship.Person2 = Relationship.belongsTo(models.Person, { foreignKey: 'person2Id' });
+    Relationship.Person1 = Relationship.belongsTo(models.Person, { foreignKey: 'id' });
+    Relationship.Person2 = Relationship.belongsTo(models.Person, { foreignKey: 'id' });
     Relationship.Events = Relationship.hasMany(models.Event);    
   };
   return Relationship;

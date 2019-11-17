@@ -1,8 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Occupation = sequelize.define('Occupation', {
-    begin: DataTypes.DATEONLY,
-    end: DataTypes.DATEONLY,
+    begin: DataTypes.STRING,
+    end: DataTypes.STRING,
+    address: DataTypes.STRING,
+    description: DataTypes.STRING,
     notes: DataTypes.STRING,
     type: {
       allowNull: false,

@@ -22,6 +22,10 @@ module.exports = {
       end: {
         type: Sequelize.DATEONLY
       },
+      description: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       notes: {
         type: Sequelize.STRING
       },

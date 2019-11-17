@@ -31,7 +31,13 @@ module.exports = {
       type: {
         allowNull: false,
         type: Sequelize.STRING
-      }
+      },
+      address: {
+        type: Sequelize.STRING
+      },
+      date: {
+        type: Sequelize.STRING
+      },
     });
   },
   down: (queryInterface, Sequelize) => {

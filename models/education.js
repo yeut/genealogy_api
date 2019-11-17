@@ -4,6 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     institution: DataTypes.STRING,
     field: DataTypes.STRING,
+    address: DataTypes.STRING,
+    date: DataTypes.STRING,
     notes: DataTypes.STRING,
     type: {
       allowNull: false,
