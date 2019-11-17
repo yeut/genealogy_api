@@ -18,6 +18,10 @@ module.exports = {
       },
       notes: {
         type: Sequelize.STRING
+      },
+      type: {
+        allowNull: false,
+        type: Sequelize.STRING
       }
     });
   },

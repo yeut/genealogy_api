@@ -14,19 +14,6 @@ module.exports = {
           onUpdate: 'CASCADE',
           onDelete: 'SET NULL',
         }
-      ),
-      queryInterface.addColumn(
-        'HealthConditions', // name of Source model
-        'HealthConditionTypeId', // name of the key we're adding 
-        {
-          type: Sequelize.INTEGER,
-          references: {
-            model: 'HealthConditionTypes', // name of Target model
-            key: 'id', // key in Target model that we're referencing
-          },
-          onUpdate: 'CASCADE',
-          onDelete: 'SET NULL',
-        }
       )
     ]);
   },
@@ -35,10 +22,6 @@ module.exports = {
       queryInterface.removeColumn(
         'HealthConditions', // name of Source model
         'PersonId' // key we want to remove
-      ),
-      queryInterface.removeColumn(
-        'HealthConditions', // name of Source model
-        'HealthConditionTypeId' // key we want to remove
       )
     ]);
   }

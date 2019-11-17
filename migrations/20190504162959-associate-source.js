@@ -14,19 +14,6 @@ module.exports = {
           onUpdate: 'CASCADE',
           onDelete: 'SET NULL',
         }
-      ),
-      queryInterface.addColumn(
-        'Sources', // name of Source model
-        'SourceTypeId', // name of the key we're adding 
-        {
-          type: Sequelize.INTEGER,
-          references: {
-            model: 'SourceTypes', // name of Target model
-            key: 'id', // key in Target model that we're referencing
-          },
-          onUpdate: 'CASCADE',
-          onDelete: 'SET NULL',
-        }
       )
     ]);
   },
@@ -35,10 +22,6 @@ module.exports = {
       queryInterface.removeColumn(
         'Sources', // name of Source model
         'RepositoryId' // key we want to remove
-      ),
-      queryInterface.removeColumn(
-        'Sources', // name of Source model
-        'SourceTypeId' // key we want to remove
       )
     ]);
   }

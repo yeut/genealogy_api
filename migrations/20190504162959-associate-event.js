@@ -1,60 +1,31 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return Promise.all([
+    return Promise.all([      
       queryInterface.addColumn(
         'Events', // name of Source model
-        'EventTypeId', // name of the key we're adding 
+        'PersonId', // name of the key we're adding 
         {
           type: Sequelize.INTEGER,
           references: {
-            model: 'EventTypes', // name of Target model
+            model: 'Persons', // name of Target model
             key: 'id', // key in Target model that we're referencing
           },
           onUpdate: 'CASCADE',
           onDelete: 'SET NULL',
         }
-      ),
-      queryInterface.createTable(
-        'PersonEvents',
+      ),    
+      queryInterface.addColumn(
+        'Events', // name of Source model
+        'RelationshipId', // name of the key we're adding 
         {
-          createdAt: {
-            allowNull: false,
-            type: Sequelize.DATE,
+          type: Sequelize.INTEGER,
+          references: {
+            model: 'Relationships', // name of Target model
+            key: 'id', // key in Target model that we're referencing
           },
-          updatedAt: {
-            allowNull: false,
-            type: Sequelize.DATE,
-          },
-          PersonId: {
-            type: Sequelize.INTEGER,
-            primaryKey: true,
-          },
-          EventId: {
-            type: Sequelize.INTEGER,
-            primaryKey: true,
-          },
-        }
-      ),
-      queryInterface.createTable(
-        'RelationshipEvents',
-        {
-          createdAt: {
-            allowNull: false,
-            type: Sequelize.DATE,
-          },
-          updatedAt: {
-            allowNull: false,
-            type: Sequelize.DATE,
-          },
-          RelationshipId: {
-            type: Sequelize.INTEGER,
-            primaryKey: true,
-          },
-          EventId: {
-            type: Sequelize.INTEGER,
-            primaryKey: true,
-          },
+          onUpdate: 'CASCADE',
+          onDelete: 'SET NULL',
         }
       )
     ]);
@@ -63,10 +34,12 @@ module.exports = {
     return Promise.all([
       queryInterface.removeColumn(
         'Events', // name of Source model
-        'EventTypeId' // key we want to remove
+        'PersonId' // key we want to remove
       ),
-      queryInterface.dropTable('PersonEvents'),
-      queryInterface.dropTable('RelationshipEvents')
+      queryInterface.removeColumn(
+        'Events', // name of Source model
+        'RelationshipId' // key we want to remove
+      )
     ]);
   }
 };

@@ -15,7 +15,16 @@ module.exports.Register = function(db, app) {
     console.log('Import gedcom file ' + req.file.originalName);
     var data = Import(req.file.buffer.toString());
   
-    data.forEach(element => db.models.Person.create(element));
+    data.forEach(element => {
+      db.models.Person.create(element)
+        .then(p => {
+          console.log('created person id=' + p.id);
+          element.Events.forEach(event => {
+            event.PersonId = p.id;
+            db.models.Event.create(event);
+          })
+        })        
+    });
 
     res.json(data);
   });
@@ -111,6 +120,7 @@ function GetPerson(item) {
         ev.date = item.GetChildValue('BIRT', 'DATE');
         ev.address = item.GetChildValue('BIRT', 'PLAC');
         ev.notes = item.GetChildValue('BIRT', '_FNA');
+        ev.type = 'birth';
     }
     
     return pers;

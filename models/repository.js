@@ -4,14 +4,16 @@ module.exports = (sequelize, DataTypes) => {
     description: {
       allowNull: false,
       type: DataTypes.STRING
+    },
+    type: {
+      allowNull: false,
+      type: DataTypes.STRING
     }
   }, {
     freezeTableName: true,
-    tableName: 'Repositorys'
+    tableName: 'Repositories'
   });
   Repository.associate = function(models) {
-    // associations can be defined here
-    Repository.RepositoryType = Repository.belongsTo(models.RepositoryType); 
     Repository.Sources = Repository.hasMany(models.Source); 
   };
   return Repository;

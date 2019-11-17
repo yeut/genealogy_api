@@ -17,12 +17,16 @@ module.exports = {
         type: Sequelize.DATE
       },
       date: {
-        type: Sequelize.DATEONLY
+        type: Sequelize.STRING
       },
       address: {
         type: Sequelize.STRING
       },
       notes: {
+        type: Sequelize.STRING
+      },
+      type: {
+        allowNull: false,
         type: Sequelize.STRING
       }
     });

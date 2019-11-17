@@ -12,8 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     freezeTableName: true,
     tableName: 'Persons'
   });
-  Person.associate = function(models) {
-    // associations can be defined here    
+  Person.associate = function(models) {    
     Person.Educations = Person.hasMany(models.Education);
     Person.Events = Person.hasMany(models.Event);
     Person.HealthConditions = Person.hasMany(models.HealthCondition);
